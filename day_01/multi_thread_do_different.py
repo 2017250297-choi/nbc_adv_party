@@ -1,4 +1,5 @@
 import threading
+from multi_process import Process
 import os
 
 
@@ -20,8 +21,20 @@ def baz():
     print(f'pid is:    {os.getpid()}')
 
 
+def foobarbaz():
+    print('----------child process start----------')
+    print(f'Im process. My pid is {os.getpid()}')
+    thread1 = threading.Thread(target=foo).start()
+    thread2 = threading.Thread(target=foo).start()
+    thread3 = threading.Thread(target=foo).start()
+
+    print('-----------child process end-----------')
+
+
 if __name__ == '__main__':
     print(f'Im process. My pid is {os.getpid()}')
+    # threds do same taskts
+    child = Process(target=foobarbaz).start()
     # threads do different tasks
     thread1 = threading.Thread(target=foo).start()
     thread2 = threading.Thread(target=bar).start()
