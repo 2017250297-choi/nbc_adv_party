@@ -33,7 +33,7 @@ def foobarbaz():
 
 if __name__ == '__main__':
     print(f'Im process. My pid is {os.getpid()}')
-    # threds do same taskts
+    # threds do same taskts on child process
     child = Process(target=foobarbaz).start()
     # threads do different tasks
     thread1 = threading.Thread(target=foo).start()
