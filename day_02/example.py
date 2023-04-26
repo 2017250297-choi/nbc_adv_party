@@ -9,11 +9,14 @@ co = my_coroutine()
 
 # 코루틴 실행 준비
 next(co)
-next(co)
 # 값을 보내기
-co.send("Hello, world!")
-co.send("Hello, world!")
-co.send("Hello, world!")
+co.send("Hello, world!")  # Received value: Hello, world!
+co.send("hi, world!")  # Received value: hi, world!
+co.send("bye, world!")  # Received value: bye, world!
+co = my_coroutine()
+next(co)
+for i in co:
+    print(i)
 
 
 def my_generator():
@@ -26,6 +29,10 @@ gen = my_generator()
 print(next(gen))  # 1
 print(next(gen))  # 2
 print(next(gen))  # 3
+
+gen = my_generator()
+for i in gen:
+    print(i)
 
 
 def my_coroutine():
